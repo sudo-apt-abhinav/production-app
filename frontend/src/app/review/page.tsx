@@ -2,14 +2,14 @@ import Link from "next/link";
 
 export default function Review() {
   return (
-    <>
+    <div className="bg-white text-gray-900 min-h-screen flex flex-col items-center px-2 sm:px-8 py-10">
       {/* Star Logo and Heading */}
       <div className="flex flex-col items-center justify-center mt-10 mb-8">
         <div className="w-12 h-12 flex items-center justify-center rounded-full bg-yellow-400/90 mb-4 shadow">
-          <span className="text-2xl text-[#232b39]">★</span>
+          <span className="text-2xl text-white">★</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-yellow-400 mb-2 text-center">Client Experiences</h1>
-        <p className="text-base sm:text-lg text-gray-200 text-center max-w-2xl">
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-black mb-2 text-center">Client Experiences</h1>
+        <p className="text-base sm:text-lg text-gray-700 text-center max-w-2xl">
           Discover how we've helped businesses grow and succeed through genuine partnerships and measurable results.
         </p>
       </div>
@@ -96,6 +96,6 @@ export default function Review() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 } 

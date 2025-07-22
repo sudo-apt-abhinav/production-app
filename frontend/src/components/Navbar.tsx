@@ -25,9 +25,9 @@ export default function Navbar() {
   return (
     <nav
       id="main-navbar"
-      className="w-full flex items-center justify-between py-4 px-8 bg-white dark:bg-gray-900 shadow-md relative z-50 sticky top-0"
+      className="w-full flex items-center justify-between py-4 px-8 bg-black shadow-md relative z-50 sticky top-0"
     >
-      <div className="text-xl font-bold text-gray-900 dark:text-white">MySite</div>
+      <div className="text-xl font-bold text-white">MySite</div>
       {/* Desktop Nav */}
       <div className="hidden md:flex gap-6 items-center">
         {navLinks.map((link) =>
@@ -39,7 +39,7 @@ export default function Navbar() {
               onMouseLeave={() => setDropdownOpen(false)}
             >
               <button
-                className="text-gray-700 dark:text-gray-200 font-medium px-2 py-1 focus:outline-none relative transition-colors duration-200 group-hover:text-yellow-400"
+                className="text-white font-medium px-2 py-1 focus:outline-none relative transition-colors duration-200 group-hover:text-yellow-400"
                 tabIndex={0}
                 aria-haspopup="true"
                 aria-expanded={dropdownOpen}
@@ -49,7 +49,7 @@ export default function Navbar() {
               </button>
               {dropdownOpen && (
                 <div
-                  className="absolute left-0 mt-2 w-40 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg z-10 py-2"
+                  className="absolute left-0 mt-2 w-40 bg-black border border-gray-700 rounded shadow-lg z-10 py-2"
                   onMouseEnter={() => setDropdownOpen(true)}
                   onMouseLeave={() => setDropdownOpen(false)}
                 >
@@ -57,7 +57,7 @@ export default function Navbar() {
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-yellow-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
+                      className="block px-4 py-2 text-white hover:text-yellow-400 hover:bg-gray-800 transition-colors duration-200"
                       onClick={handleDropdownClick}
                     >
                       {item.label}
@@ -70,7 +70,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-gray-700 dark:text-gray-200 font-medium px-2 py-1 relative transition-colors duration-200 group hover:text-yellow-400"
+              className="text-white font-medium px-2 py-1 relative transition-colors duration-200 group hover:text-yellow-400"
             >
               <span className="relative group">
                 {link.label}
@@ -82,7 +82,7 @@ export default function Navbar() {
       </div>
       {/* Mobile Hamburger */}
       <button
-        className="md:hidden flex items-center justify-center w-10 h-10 rounded focus:outline-none text-gray-900 dark:text-gray-100"
+        className="md:hidden flex items-center justify-center w-10 h-10 rounded focus:outline-none text-white"
         onClick={() => setMobileMenuOpen((open) => !open)}
         aria-label="Toggle menu"
       >
@@ -92,12 +92,12 @@ export default function Navbar() {
       </button>
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-white dark:bg-gray-900 shadow-lg border-t border-gray-200 dark:border-gray-700 z-40 animate-fade-in flex flex-col gap-2 py-4">
+        <div className="md:hidden absolute top-full left-0 w-full bg-black shadow-lg border-t border-gray-700 z-40 animate-fade-in flex flex-col gap-2 py-4">
           {navLinks.map((link) =>
             link.dropdown ? (
               <div key={link.label} className="relative group">
                 <button
-                  className="w-full text-left text-gray-700 dark:text-gray-200 font-medium px-4 py-2 focus:outline-none flex items-center justify-between"
+                  className="w-full text-left text-white font-medium px-4 py-2 focus:outline-none flex items-center justify-between"
                   onClick={() => setDropdownOpen((open) => !open)}
                 >
                   {link.label}
@@ -111,7 +111,7 @@ export default function Navbar() {
                       <Link
                         key={item.href}
                         href={item.href}
-                        className="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-yellow-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
+                        className="block px-4 py-2 text-white hover:text-yellow-400 hover:bg-gray-800 transition-colors duration-200"
                         onClick={() => { setDropdownOpen(false); setMobileMenuOpen(false); }}
                       >
                         {item.label}
@@ -124,7 +124,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="block px-4 py-2 text-gray-700 dark:text-gray-200 font-medium hover:text-yellow-400"
+                className="block px-4 py-2 text-white font-medium hover:text-yellow-400"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.label}

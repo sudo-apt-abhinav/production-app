@@ -2,13 +2,13 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0c1220] shadow-[0_-8px_32px_0_rgba(0,0,0,0.45)] text-gray-100 pt-10 pb-4 px-4 sm:px-6 md:px-0">
+    <footer className="bg-[#000000] shadow-[0_-8px_32px_0_rgba(0,0,0,0.45)] text-gray-100 pt-10 pb-4 px-4 sm:px-6 md:px-0">
       <div className="max-w-7xl mx-auto flex flex-col gap-8">
         {/* Top Row: Logo and Tagline */}
         <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-evenly gap-4 sm:gap-8 mb-4 w-full">
           {/* Placeholder for logo */}
           <div className="flex-shrink-0 mb-2 sm:mb-0">
-            <div className="w-28 h-12 sm:w-32 sm:h-16 bg-yellow-500 flex items-center justify-center rounded-md font-bold text-lg sm:text-xl text-[#101726]">Logo</div>
+            <div className="w-28 h-12 sm:w-32 sm:h-16 bg-[#b5acacbe] flex items-center justify-center rounded-md font-bold text-lg sm:text-xl text-[#101726]">Logo</div>
           </div>
           <p className="text-center sm:text-left text-base sm:text-lg text-gray-200 max-w-xs sm:max-w-2xl px-2 sm:px-0">
             Empowering brands with strategic marketing & cinematic storytelling that inspires and drives engagement.

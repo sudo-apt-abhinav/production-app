@@ -14,10 +14,10 @@ const movieList = [
 
 export default function Partners() {
   return (
-    <div className="bg-[#101726] text-gray-100 min-h-screen flex flex-col items-center px-2 sm:px-8 py-10">
+    <div className="bg-white text-gray-900 min-h-screen flex flex-col items-center px-2 sm:px-8 py-10">
       {/* Heading */}
       <div className="w-full max-w-6xl mx-auto text-center mt-20 mb-12">
-        <h1 className="text-3xl sm:text-4xl font-bold text-yellow-400 mb-2">Our Partners</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold text-black mb-2">Our Partners</h1>
       </div>
       {/* Partner Boxes */}
       <div className="w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-28">

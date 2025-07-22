@@ -8,9 +8,9 @@ export default function Artists() {
   return (
     <>
       {/* Landing Section */}
-      <div className="flex flex-col items-center justify-center min-h-screen text-center px-4 w-full">
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-yellow-400 mb-4">Vivek Parekh Productions</h1>
-        <p className="text-lg sm:text-2xl text-gray-200 mb-8 max-w-2xl">
+      <div className="flex flex-col items-center justify-center min-h-screen bg-white text-gray-900">
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-black mb-4">Vivek Parekh Productions</h1>
+        <p className="text-lg sm:text-2xl text-gray-700 mb-8 max-w-2xl">
           Creative collaborations that shaped memorable brand experiences
         </p>
         <a

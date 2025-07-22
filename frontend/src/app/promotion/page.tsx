@@ -27,11 +27,11 @@ export default function Promotion() {
   const [mainVideo, setMainVideo] = useState(videoList[0]);
 
   return (
-    <div className="bg-[#101726] text-gray-100 min-h-screen flex flex-col items-center px-2 sm:px-8 py-10">
+    <div className="bg-white text-gray-900 min-h-screen flex flex-col items-center px-2 sm:px-8 py-10">
       {/* Heading */}
       <div className="w-full max-w-4xl mx-auto text-center mb-8">
-        <h1 className="text-3xl sm:text-4xl font-bold text-yellow-400 mb-2">Watch Our Client's Testimonials</h1>
-        <p className="text-lg sm:text-xl text-gray-200">Experience the impact of our collaborations through these videos. Real stories, real results.</p>
+        <h1 className="text-3xl sm:text-4xl font-bold text-black mb-2">Watch Our Client's Testimonials</h1>
+        <p className="text-lg sm:text-xl text-gray-700">Experience the impact of our collaborations through these videos. Real stories, real results.</p>
       </div>
       {/* Main Video */}
       <div className="w-full flex justify-center items-center mb-8" style={{ minHeight: '60vh' }}>
@@ -96,8 +96,8 @@ export default function Promotion() {
 
       {/* Portfolio Section */}
       <div className="w-full max-w-6xl mx-auto text-center mt-16 mb-8">
-        <h2 className="text-3xl sm:text-4xl font-bold text-yellow-400 mb-2">Our Creative Portfolio</h2>
-        <p className="text-lg sm:text-xl text-gray-200">Explore our collection of stunning projects</p>
+        <h2 className="text-3xl sm:text-4xl font-bold text-black mb-2">Our Creative Portfolio</h2>
+        <p className="text-lg sm:text-xl text-gray-700">Explore our collection of stunning projects</p>
       </div>
       <div className="w-full max-w-6xl flex items-center justify-center relative mb-16">
         {/* Left Arrow for photo slider */}
@@ -196,10 +196,10 @@ export default function Promotion() {
           </div>
           {/* Content */}
           <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-16 sm:py-24">
-            <h1 className="text-4xl sm:text-6xl font-extrabold text-yellow-400 mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-6xl font-extrabold text-black mb-6 leading-tight">
               Empower Your Creative Vision
             </h1>
-            <p className="text-xl sm:text-2xl text-gray-100 mb-8 max-w-3xl">
+            <p className="text-xl sm:text-2xl text-gray-900 mb-8 max-w-3xl">
               We connect exceptional creators with the right audience through
               <span className="font-bold text-yellow-400"> strategic and impactful advertising</span>. Amplify your message—right where it matters.
             </p>
