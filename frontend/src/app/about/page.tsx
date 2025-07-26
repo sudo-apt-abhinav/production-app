@@ -1,6 +1,13 @@
+"use client";
 import Link from "next/link";
 
 export default function About() {
+  const scrollToNext = () => {
+    window.scrollBy({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
+  };
   return (
     <>
       {/* About Company Hero Section */}
@@ -38,7 +45,7 @@ export default function About() {
       {/* Why Choose Us Section */}
       <section className="w-full bg-gray-100 flex flex-col items-center justify-center px-4 py-16">
         <h2 className="text-4xl sm:text-5xl font-extrabold text-black mb-2 text-center">Why Choose Us</h2>
-        <div className="w-24 h-1 bg-yellow-400 rounded-full mb-10"></div>
+        <div className="w-24 h-1 bg-black rounded-full mb-10"></div>
         <div className="w-full max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch justify-center">
           {/* Card 1 */}
           <div className="bg-white rounded-2xl shadow-lg flex flex-col items-start p-8 min-h-[220px] border border-gray-200">
@@ -132,6 +139,15 @@ export default function About() {
           </div>
     </div>
       </section>
+      
+      <button
+        type="button"
+        onClick={scrollToNext}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce z-10 focus:outline-none"
+        aria-label="Scroll to next section"
+      >
+        <span className="text-black font-bold text-3xl">↓</span>
+      </button>
     </>
   );
-} 
+}

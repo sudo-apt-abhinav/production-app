@@ -12,7 +12,7 @@ export default function ContactMe() {
               type="text"
               id="name"
               name="name"
-              className="w-full px-4 py-3 rounded-lg bg-white text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              className="w-full px-4 py-3 rounded-lg bg-white text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-800/80"
               placeholder="Your Name"
               required
             />
@@ -23,7 +23,7 @@ export default function ContactMe() {
               type="email"
               id="email"
               name="email"
-              className="w-full px-4 py-3 rounded-lg bg-white text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              className="w-full px-4 py-3 rounded-lg bg-white text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-800/80"
               placeholder="you@email.com"
               required
             />
@@ -34,14 +34,14 @@ export default function ContactMe() {
               id="message"
               name="message"
               rows={5}
-              className="w-full px-4 py-3 rounded-lg bg-white text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              className="w-full px-4 py-3 rounded-lg bg-white text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-800/80"
               placeholder="Type your message here..."
               required
             />
           </div>
           <button
             type="submit"
-            className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 rounded-lg shadow-lg transition-all text-lg mt-2"
+            className="w-full bg-gray-800/90 hover:bg-gray-800 text-white font-bold py-3 rounded-lg shadow-lg transition-all text-lg mt-2"
           >
             Send Message
           </button>

@@ -88,7 +88,7 @@ export default function Home() {
     let animation: gsap.core.Tween | null = null;
     let resizeTimeout: NodeJS.Timeout | null = null;
 
-    let split: SplitText;
+    let split: SplitText | null = null;
 
     function setupSplitText() {
       if (split) split.revert();
@@ -208,36 +208,83 @@ export default function Home() {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("load", () => ScrollTrigger.refresh());
       if (animation) animation.kill();
-      split.revert();
+      if (split) split.revert();
       ScrollTrigger.getAll().forEach(t => t.kill());
     };
   }, []);
 
+  const scrollToNext = (event: React.MouseEvent) => {
+    const currentSection = event.currentTarget.closest('section');
+    if (currentSection) {
+      const nextSection = currentSection.nextElementSibling as HTMLElement;
+      if (nextSection) {
+        nextSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <main className="w-full">
       {/* Hero with moving background text */}
-      <section ref={heroRef} className="fixed top-0 left-0 w-full h-screen bg-[#101726] flex flex-col items-center justify-center text-center overflow-hidden z-[-10]">
-        <h1 className="text-5xl sm:text-9xl font-extrabold text-white mb-4">Vivek Parekh</h1>
-        <h2 className="text-3xl sm:text-5xl font-bold text-yellow-400 mb-6">Production, Creative Agency</h2>
-        <div ref={bgTextRef} className="absolute top-1/2 left-0 w-max text-[7vw] sm:text-[6vw] font-extrabold text-gray-400 opacity-20 pointer-events-none select-none leading-[1.5]" style={{ transform: "translateY(-50%)" }}>
-          <span>Where strategic marketing</span><br/><br/>
-          <span>meets artisan film production to elevate luxury brands</span>
+      <section
+        ref={heroRef}
+        className="fixed top-0 left-0 w-full h-screen bg-[#101726] flex flex-col items-center justify-center text-center overflow-hidden z-[-10]"
+      >
+        <h1 className="text-5xl sm:text-9xl font-extrabold text-white mb-4">
+          Vivek Parekh
+        </h1>
+        <h2 className="text-3xl sm:text-5xl font-bold text-yellow-400 mb-6">
+          Production, Creative Agency
+        </h2>
+        <div
+          ref={bgTextRef}
+          className="absolute top-1/2 left-60 w-max text-[7vw] sm:text-[6vw] font-extrabold text-gray-400 opacity-20 pointer-events-none select-none leading-[1.5]"
+          style={{ transform: "translateY(-50%)" }}
+        >
+          <span>Where strategic marketing meets artisan </span>
+          <br />
+          <br />
+          <span>film production to elevate luxury brands</span>
         </div>
+        <button
+          type="button"
+          onClick={scrollToNext}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce z-10 focus:outline-none"
+          aria-label="Scroll to next section"
+        >
+          <span className="text-white font-bold text-3xl">↓</span>
+        </button>
       </section>
 
       <div className="h-screen" />
 
       {/* About section with SplitText */}
-      <section ref={aboutRef} className="w-full bg-gray-100 flex flex-col items-center justify-center px-4 py-16">
+      <section
+        ref={aboutRef}
+        className="w-full bg-gray-100 flex flex-col items-center justify-center px-4 py-16 relative"
+      >
         <div className="max-w-10xl bg-white border border-black rounded-3xl shadow-2xl p-8 md:p-10 flex flex-col md:flex-row gap-5">
           <div className="w-full md:w-1/3 flex justify-center">
-            <div ref={imageRef} className="w-[170px] h-[370px] md:w-[220px] md:h-[320px] rounded-2xl shadow-xl bg-gray-200 flex items-center justify-center">
+            <div
+              ref={imageRef}
+              className="w-[170px] h-[370px] md:w-[220px] md:h-[320px] rounded-2xl shadow-xl bg-gray-200 flex items-center justify-center"
+            >
               <span className="text-gray-400 text-xl">Image</span>
             </div>
           </div>
           <div className="pl-5 pr-5">
-            <p ref={splitRef} className="text-3xl font-bold text-black text-justify leading-12">
-              With over a decade of expertise in marketing and production, Vivek Parekh crafts powerful brand stories that leave a lasting impact. His work spans industries from FMCG to entertainment, blending creativity with strategy to build iconic identities.<br/> Specializing in movie associations, strategic digital campaigns, and film branding solutions, Vivek's approach combines innovation with a client-first mindset — making him a trusted partner in brand elevation.
+            <p
+              ref={splitRef}
+              className="text-3xl font-bold text-black text-justify leading-12"
+            >
+              With over a decade of expertise in marketing and production, Vivek
+              Parekh crafts powerful brand stories that leave a lasting impact.
+              His work spans industries from FMCG to entertainment, blending
+              creativity with strategy to build iconic identities.
+              <br /> Specializing in movie associations, strategic digital
+              campaigns, and film branding solutions, Vivek's approach combines
+              innovation with a client-first mindset — making him a trusted
+              partner in brand elevation.
             </p>
           </div>
         </div>
@@ -245,52 +292,63 @@ export default function Home() {
 
       {/* Mission Section with typewriter & hover cards */}
       <section
-      ref={missionRef}
-      className="w-full bg-gray-100 flex flex-col items-center justify-center px-4 py-16"
-    >
-      <h2 className="text-4xl sm:text-5xl font-extrabold text-black mb-4 text-center">
-        Our Mission
-      </h2>
-      <p className="text-lg sm:text-xl text-gray-800 mb-12 text-center max-w-4xl min-h-[4rem]">
-        {typedMissionText}
-      </p>
-      <div className="w-full max-w-6xl flex flex-col md:flex-row gap-8 items-center justify-center">
-        {/* Card 1 */}
-        <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:scale-105 transform transition-all duration-300 ease-in-out flex flex-col items-center justify-center px-8 py-8 w-full md:w-1/3 max-w-md text-center border border-gray-200 cursor-pointer">
-          <span className="text-yellow-400 text-4xl mb-4">📢</span>
-          <h3 className="text-xl font-bold mb-2 text-black">Empower Creators</h3>
-          <p className="text-gray-700 text-base">
-            Providing tools and platforms for creators to showcase their work
-          </p>
+        ref={missionRef}
+        className="w-full bg-gray-100 flex flex-col items-center justify-center px-4 py-16 relative"
+      >
+        <h2 className="text-4xl sm:text-5xl font-extrabold text-black mb-4 text-center">
+          Our Mission
+        </h2>
+        <p className="text-lg sm:text-xl text-gray-800 mb-12 text-center max-w-4xl min-h-[4rem]">
+          {typedMissionText}
+        </p>
+        <div className="w-full max-w-6xl flex flex-col md:flex-row gap-8 items-center justify-center">
+          {/* Card 1 */}
+          <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:scale-105 transform transition-all duration-300 ease-in-out flex flex-col items-center justify-center px-8 py-8 w-full md:w-1/3 max-w-md text-center border border-gray-200 cursor-pointer">
+            <span className="text-yellow-400 text-4xl mb-4">📢</span>
+            <h3 className="text-xl font-bold mb-2 text-black">
+              Empower Creators
+            </h3>
+            <p className="text-gray-700 text-base">
+              Providing tools and platforms for creators to showcase their work
+            </p>
+          </div>
+          {/* Card 2 */}
+          <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:scale-105 transform transition-all duration-300 ease-in-out flex flex-col items-center justify-center px-8 py-8 w-full md:w-1/3 max-w-md text-center border border-gray-200 cursor-pointer">
+            <span className="text-yellow-400 text-4xl mb-4">🎯</span>
+            <h3 className="text-xl font-bold mb-2 text-black">
+              Targeted Reach
+            </h3>
+            <p className="text-gray-700 text-base">
+              Connecting creative work with the most relevant audiences
+            </p>
+          </div>
+          {/* Card 3 */}
+          <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:scale-105 transform transition-all duration-300 ease-in-out flex flex-col items-center justify-center px-8 py-8 w-full md:w-1/3 max-w-md text-center border border-gray-200 cursor-pointer">
+            <span className="text-yellow-400 text-4xl mb-4">🚀</span>
+            <h3 className="text-xl font-bold mb-2 text-black">
+              Impactful Results
+            </h3>
+            <p className="text-gray-700 text-base">
+              Delivering advertising that makes a measurable difference
+            </p>
+          </div>
         </div>
-        {/* Card 2 */}
-        <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:scale-105 transform transition-all duration-300 ease-in-out flex flex-col items-center justify-center px-8 py-8 w-full md:w-1/3 max-w-md text-center border border-gray-200 cursor-pointer">
-          <span className="text-yellow-400 text-4xl mb-4">🎯</span>
-          <h3 className="text-xl font-bold mb-2 text-black">Targeted Reach</h3>
-          <p className="text-gray-700 text-base">
-            Connecting creative work with the most relevant audiences
-          </p>
-        </div>
-        {/* Card 3 */}
-        <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:scale-105 transform transition-all duration-300 ease-in-out flex flex-col items-center justify-center px-8 py-8 w-full md:w-1/3 max-w-md text-center border border-gray-200 cursor-pointer">
-          <span className="text-yellow-400 text-4xl mb-4">🚀</span>
-          <h3 className="text-xl font-bold mb-2 text-black">Impactful Results</h3>
-          <p className="text-gray-700 text-base">
-            Delivering advertising that makes a measurable difference
-          </p>
-        </div>
-      </div>
-    </section>
+      </section>
 
       {/* Clients Section */}
-      <section className="w-full bg-white flex flex-col items-center justify-center px-4 py-16">
-        <h2 className="text-4xl sm:text-5xl font-extrabold text-black mb-4 text-center">Our Clients</h2>
+      <section className="w-full bg-white flex flex-col items-center justify-center px-4 py-16 relative">
+        <h2 className="text-4xl sm:text-5xl font-extrabold text-black mb-4 text-center">
+          Our Clients
+        </h2>
         <p className="text-lg sm:text-xl text-gray-800 mb-12 text-center max-w-4xl">
           {typedClientText}
         </p>
         <div className="w-full max-w-5xl grid grid-cols-2 sm:grid-cols-5 gap-8 items-center justify-center">
           {[...Array(10)].map((_, i) => (
-            <div key={i} className="flex items-center justify-center bg-gray-200 rounded-xl min-h-[80px] border border-gray-200">
+            <div
+              key={i}
+              className="flex items-center justify-center bg-gray-200 rounded-xl min-h-[80px] border border-gray-200"
+            >
               <span className="text-gray-400">Logo</span>
             </div>
           ))}
@@ -304,7 +362,11 @@ export default function Home() {
             Empower Your Creative Vision
           </h1>
           <p className="text-xl sm:text-2xl text-black mb-10 text-center max-w-3xl">
-            We connect exceptional creators with the right audience through <span className="font-bold text-yellow-400">strategic and impactful advertising</span>. Amplify your message—right where it matters.
+            We connect exceptional creators with the right audience through{" "}
+            <span className="font-bold text-yellow-400">
+              strategic and impactful advertising
+            </span>
+            . Amplify your message—right where it matters.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link
@@ -320,7 +382,7 @@ export default function Home() {
               See Success Stories
             </Link>
           </div>
-    </div>
+        </div>
       </section>
     </main>
   );

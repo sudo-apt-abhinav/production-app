@@ -12,7 +12,6 @@ const navLinks = [
       { href: '/clients/artists', label: 'Artists' },
     ] },
   { href: '/review', label: 'Review' },
-  { href: '/contact-me', label: 'Contact Me' },
 ];
 
 export default function Navbar() {
@@ -27,9 +26,16 @@ export default function Navbar() {
       id="main-navbar"
       className="w-full flex items-center justify-between py-4 px-8 bg-black shadow-md relative z-50 sticky top-0"
     >
-      <div className="text-xl font-bold text-white">MySite</div>
-      {/* Desktop Nav */}
-      <div className="hidden md:flex gap-6 items-center">
+      {/* Logo/Brand */}
+      <div className="flex items-center">
+        <div className="text-xl font-bold text-white tracking-wide">
+          Vivek Parekh
+          <span className="block text-xs font-normal text-gray-300 uppercase tracking-wider">PRODUCTION</span>
+        </div>
+      </div>
+      
+      {/* Desktop Nav - Centered */}
+      <div className="hidden md:flex gap-8 items-center absolute left-1/2 transform -translate-x-1/2">
         {navLinks.map((link) =>
           link.dropdown ? (
             <div
@@ -39,17 +45,20 @@ export default function Navbar() {
               onMouseLeave={() => setDropdownOpen(false)}
             >
               <button
-                className="text-white font-medium px-2 py-1 focus:outline-none relative transition-colors duration-200 group-hover:text-yellow-400"
+                className="text-white font-medium px-3 py-2 focus:outline-none relative transition-all duration-300 group-hover:text-gray-200 flex items-center gap-2"
                 tabIndex={0}
                 aria-haspopup="true"
                 aria-expanded={dropdownOpen}
               >
                 {link.label}
-                <span className="block h-[2px] bg-yellow-400 absolute left-0 bottom-0 w-0 group-hover:w-full transition-all duration-300 origin-left"></span>
+                <span className={`text-white transition-transform duration-300 ${dropdownOpen ? 'rotate-180' : ''} text-sm`}>
+                  ▼
+                </span>
+                <span className="block h-[1px] bg-gray-400 absolute left-0 bottom-0 w-0 group-hover:w-full transition-all duration-300 origin-left"></span>
               </button>
               {dropdownOpen && (
                 <div
-                  className="absolute left-0 mt-2 w-40 bg-black border border-gray-700 rounded shadow-lg z-10 py-2"
+                  className="absolute left-0 mt-1 w-44 bg-black border border-gray-700 rounded-lg shadow-2xl z-10 py-2 animate-fade-in"
                   onMouseEnter={() => setDropdownOpen(true)}
                   onMouseLeave={() => setDropdownOpen(false)}
                 >
@@ -57,10 +66,11 @@ export default function Navbar() {
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="block px-4 py-2 text-white hover:text-yellow-400 hover:bg-gray-800 transition-colors duration-200"
+                      className="block px-4 py-3 text-white hover:text-gray-200 hover:bg-gray-800 transition-all duration-200 relative group"
                       onClick={handleDropdownClick}
                     >
                       {item.label}
+                      <span className="block h-[1px] bg-gray-400 absolute left-4 bottom-0 w-0 group-hover:w-[calc(100%-2rem)] transition-all duration-300 origin-left"></span>
                     </Link>
                   ))}
                 </div>
@@ -70,15 +80,26 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-white font-medium px-2 py-1 relative transition-colors duration-200 group hover:text-yellow-400"
+              className="text-white font-medium px-3 py-2 relative transition-all duration-300 group hover:text-gray-200"
             >
               <span className="relative group">
                 {link.label}
-                <span className="block h-[2px] bg-yellow-400 absolute left-0 bottom-0 w-0 group-hover:w-full transition-all duration-300 origin-left"></span>
+                <span className="block h-[1px] bg-gray-400 absolute left-0 bottom-0 w-0 group-hover:w-full transition-all duration-300 origin-left"></span>
               </span>
             </Link>
           )
         )}
+      </div>
+      
+      {/* Contact Us Button */}
+      <div className="hidden md:flex">
+        <Link
+          href="/contact-me"
+          className="relative bg-gradient-to-r from-gray-500 to-black text-white font-semibold px-6 py-2 rounded-full overflow-hidden group transition-all duration-300 hover:shadow-lg transform"
+        >
+          <span className="absolute inset-0 bg-gradient-to-r from-gray-500 to-gray-900 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out"></span>
+          <span className="relative z-10">Contact Us</span>
+        </Link>
       </div>
       {/* Mobile Hamburger */}
       <button
@@ -111,7 +132,7 @@ export default function Navbar() {
                       <Link
                         key={item.href}
                         href={item.href}
-                        className="block px-4 py-2 text-white hover:text-yellow-400 hover:bg-gray-800 transition-colors duration-200"
+                        className="block px-4 py-2 text-white hover:text-gray-200 hover:bg-gray-800 transition-colors duration-200"
                         onClick={() => { setDropdownOpen(false); setMobileMenuOpen(false); }}
                       >
                         {item.label}
@@ -124,13 +145,24 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="block px-4 py-2 text-white font-medium hover:text-yellow-400"
+                className="block px-4 py-2 text-white font-medium hover:text-gray-200"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.label}
               </Link>
             )
           )}
+          {/* Mobile Contact Us */}
+          <div className="px-4 py-2">
+            <Link
+              href="/contact-me"
+              className="relative block bg-gradient-to-r from-gray-500 to-black text-white font-semibold px-6 py-3 rounded-full text-center overflow-hidden group transition-all duration-300"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-gray-500 to-gray-900 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out"></span>
+              <span className="relative z-10">Contact Us</span>
+            </Link>
+          </div>
         </div>
       )}
     </nav>

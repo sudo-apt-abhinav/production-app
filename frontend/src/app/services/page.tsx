@@ -44,7 +44,7 @@ export default function Services() {
           className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce z-10 focus:outline-none"
           aria-label="Scroll to next section"
         >
-          <span className="text-yellow-500 text-3xl">↓</span>
+          <span className="text-black font-bold text-3xl">↓</span>
         </button>
       </section>
 
@@ -139,8 +139,8 @@ export default function Services() {
 
       {/* Our Mission Section */}
       <section className="max-w-6xl mx-auto mb-16">
-        <h2 className="text-2xl font-bold text-black mb-2">Our Mission</h2>
-        <p className="text-lg text-gray-800 mb-8">"We empower creators to reach the right audience through impactful advertising"</p>
+        <h2 className="text-2xl font-bold text-black mb-2 text-center">Our Mission</h2>
+        <p className="text-lg text-center text-gray-800 mb-8">We empower creators to reach the right audience through impactful advertising</p>
         <div className="flex flex-col md:flex-row justify-center gap-6">
           <div className="flex-1 flex flex-col items-center bg-gray-100 rounded-lg p-6 border border-gray-200">
             <span className="bg-yellow-400 rounded-full p-3 mb-2 text-white text-2xl">💡</span>
